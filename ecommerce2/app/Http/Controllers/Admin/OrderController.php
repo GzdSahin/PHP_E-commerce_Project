@@ -1,0 +1,18 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\Order;
+
+class OrderController extends Controller
+{
+    public function Index(){
+        $pending_orders=Order::where('durum','pending')->latest()->get();
+        return view( 'admin.pendingorders',compact('pending_orders'));
+    }
+
+
+    
+}
